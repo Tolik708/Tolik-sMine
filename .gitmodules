@@ -1,0 +1,3 @@
+[submodule "Code/libs/ToliksLib"]
+	path = Code/libs/ToliksLib
+	url = https://github.com/Tolik708/ToliksLib

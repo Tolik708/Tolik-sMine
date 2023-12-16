@@ -1,0 +1,1 @@
+This is just a simple minecraft clone. Made for fun.

@@ -19,7 +19,7 @@ void Application::Run()
   m_running = true;
   while(m_running)
   {
-    m_window.ListenToEvents();
+    m_window.Update();
     m_game.Update();
   }
 }

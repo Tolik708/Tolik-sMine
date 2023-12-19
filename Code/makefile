@@ -20,7 +20,7 @@ PROGRESS := 0
 else
 PROGRESS := 1 #here put user preference
 endif
-DEFINES := DEBUG
+DEFINES :=
 STDVERSION := -std=c++17
 INCLUDEFILESEXTENTIONS := hpp tpp inl
 INCLUDEEVERYFOLDER := 

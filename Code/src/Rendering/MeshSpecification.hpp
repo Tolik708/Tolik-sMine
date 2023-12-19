@@ -4,20 +4,28 @@
 #include "Rendering/Renderer.hpp"
 #include "Math/Constants.hpp"
 
+#define BIT(x) (1 << x)
+
 namespace Tolik
 {
-struct BlockVertex : public Vertex
+struct SquareVertex : public Vertex
 {
-  BlockVertex(DefaultPrecisionType newX, DefaultPrecisionType newY, DefaultPrecisionType newZ) : Vertex(newX, newY, newZ) {}
-  BlockVertex(DefaultPrecisionType newX, DefaultPrecisionType newY, DefaultPrecisionType newZ, int newTexture) : Vertex(newX, newY, newZ), texture(newTexture) {}
-  // First 29 bits are index of texture in atlas. Last 2 are rotation
-  int texture = 0;
+  SquareVertex(DefFloatType newX, DefFloatType newY, DefFloatType newZ) : Vertex(newX, newY, newZ) {}
+  SquareVertex(DefFloatType newX, DefFloatType newY, DefFloatType newZ, int newTexture) : Vertex(newX, newY, newZ), flag(newTexture) {}
+  // 00000000000000000000000000000 00       00
+  // Texture id                    Rotation Flip
+  int flag = 0;
 };
 
 enum class MeshType : uint32_t
 {
-  Default = 0,
-  Chunk
+  NONE = 0,
+
+  // 3D
+  Default,
+  Square,
+
+  // 2D
 };
 }
 

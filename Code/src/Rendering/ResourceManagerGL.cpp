@@ -15,25 +15,37 @@ namespace Tolik
 ResourceManagerGL::ResourceManagerGL()
   : m_indexes
   {
-    { MeshType::Default, { 0, 0, 0 } }
+    //                     Shader Layout DrawMode Texture
+    { MeshType::Default, { 0,     0,     0,       0 } },
+    { MeshType::Square,  { 1,     1,     0,       1 } }
   },
   m_shaders
   {
-    ShaderGL("libs/ToliksLib/Code/res/Shaders/Default.vert", "libs/ToliksLib/Code/res/Shaders/Default.frag")
+    ShaderGL("res/Shaders/Default.vert", "res/Shaders/Default.frag"),
+    ShaderGL("res/Shaders/Square.vert", "res/Shaders/Square.frag")
   },
   m_layouts
   {
-    BufferLayoutGL(GL_FLOAT, 3, GL_FALSE)
+    BufferLayoutGL(GL_FLOAT, 3, GL_FALSE),
+    BufferLayoutGL(GL_FLOAT, 3, GL_FALSE,
+                   GL_INT,   1, GL_FALSE)
   },
   m_drawModes
   {
     GL_TRIANGLES
+  },
+  m_textures
+  {
+    
   }
 {}
 
 ResourceManagerGL::~ResourceManagerGL()
 {
-  for(uint32_t i = 0; i < m_shaders.size(); i++)
-    m_shaders[i].Delete();
+  for(auto &shader : m_shaders)
+    shader.Delete();
+
+  for(auto &texture : m_textures)
+    texture.Delete();
 }
 }

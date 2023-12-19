@@ -2,6 +2,7 @@
 #define GAME_STATE_HPP
 
 #include "State/State.hpp"
+#include "Mesh.hpp"
 
 union SDL_Event;
 
@@ -20,7 +21,7 @@ public:
 
 private:
   StateDeps *deps;
-  void *m_mesh;
+  Mesh *m_mesh;
   Player *player;
 
   // Temp

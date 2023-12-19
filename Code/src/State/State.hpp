@@ -10,16 +10,16 @@ class Game;
 
 struct StateDeps
 {
-  StateDeps(const Game &newGame, const Window &newWindow, const Renderer &newRenderer, const UserInput &newUserInput)
+  StateDeps(Game &newGame, Window &newWindow, Renderer &newRenderer, UserInput &newUserInput)
    : game(newGame)
    , window(newWindow)
    , renderer(newRenderer)
    , userInput(newUserInput) {}
   
-  const Game &game;
-  const Window &window;
-  const Renderer &renderer;
-  const UserInput &userInput;
+  Game &game;
+  Window &window;
+  Renderer &renderer;
+  UserInput &userInput;
 };
 
 class State

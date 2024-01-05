@@ -1,3 +1,6 @@
 [submodule "Code/libs/ToliksLib"]
 	path = Code/libs/ToliksLib
 	url = https://github.com/Tolik708/ToliksLib
+[submodule "libs/ToliksLib"]
+	path = libs/ToliksLib
+	url = https://github.com/Tolik708/ToliksLib

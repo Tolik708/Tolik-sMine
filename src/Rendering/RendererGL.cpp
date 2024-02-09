@@ -60,13 +60,13 @@ void Renderer::RenderGL(const Camera &camera)
   {
     ResourceManagerGL *resources = static_cast<ResourceManagerGL*>(m_resources);
     const ShaderGL &shader = resources->GetShader(mesh->GetMeshType());
-    shader.SetUniform<4, 4>("u_view", 1, GL_FALSE, &(glm::perspective(DegreesToRadians(camera.FOV), static_cast<float>(m_width) / static_cast<float>(m_height), 0.1f, 1000.0f) * camera.GetViewMatrix())[0][0]);
+    shader.SetUniformMatrix4("u_view", 1, GL_FALSE, &(glm::perspective(DegreesToRadians(camera.FOV), static_cast<float>(m_width) / static_cast<float>(m_height), 0.1f, 1000.0f) * camera.GetViewMatrix())[0][0]);
 
     const std::vector<TextureGL> &textures = resources->GetTexture(mesh->GetMeshType());
     for(uint32_t i = 0; i < textures.size(); i++)
     {
       shader.SetUniform("u_texture0", 0);
-      //GL_CALL(glActiveTexture(GL_TEXTURE0 + i));
+      GL_CALL(glActiveTexture(GL_TEXTURE0 + i));
       textures[i].Bind();
     }
 

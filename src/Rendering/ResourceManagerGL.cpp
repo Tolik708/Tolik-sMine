@@ -23,7 +23,7 @@ ResourceManagerGL::ResourceManagerGL()
   m_shaders
   {
     ShaderGL("res/Shaders/Default.vert", "res/Shaders/Default.frag"),
-    ShaderGL("res/Shaders/Square.vert", "res/Shaders/Square.frag")
+    ShaderGL("res/Shaders/Square.vert", "res/Shaders/Square.geom", "res/Shaders/Square.frag")
   },
   m_layouts
   {
@@ -38,7 +38,7 @@ ResourceManagerGL::ResourceManagerGL()
   m_textures
   {
     {
-      TextureGL(GL_TEXTURE_2D, TextureFlags::NONE, "C:/proggraming/c++/Tolik\'sMine/Code/res/Textures/No Texture.png",
+      TextureGL(GL_TEXTURE_2D, TextureFlags::NONE, "C:/proggraming/c++/Tolik\'sMine/res/Textures/No Texture.png",
         std::make_tuple(
           std::pair(GL_TEXTURE_WRAP_S, GL_REPEAT),
           std::pair(GL_TEXTURE_WRAP_T, GL_REPEAT),
@@ -48,13 +48,13 @@ ResourceManagerGL::ResourceManagerGL()
     },
 
     {
-      TextureGL(GL_TEXTURE_2D, TextureFlags::NONE, "C:/proggraming/c++/Tolik\'sMine/Code/res/Textures/Test.png",
+      TextureGL(GL_TEXTURE_2D_ARRAY, TextureFlags::GenerateMipmap, "C:/proggraming/c++/Tolik\'sMine/res/Textures/Test.png",
         std::make_tuple(
           std::pair(GL_TEXTURE_WRAP_S, GL_REPEAT),
           std::pair(GL_TEXTURE_WRAP_T, GL_REPEAT),
           std::pair(GL_TEXTURE_MIN_FILTER, GL_NEAREST),
           std::pair(GL_TEXTURE_MAG_FILTER, GL_NEAREST)
-        ))
+        ), Vec2i(4, 4))
     },
   }
 {}
